@@ -1,0 +1,128 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< me.index:hw3-template >------------------------
+[INFO] Building hw3-template 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ hw3-template ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ hw3-template ---
+[INFO] skip non existing resourceDirectory C:\Users\sanya\OneDrive\Desktop\motik_dev\hw3-template\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ hw3-template ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 21 source files with javac [debug target 21] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 21
+  not setting the location of system modules may lead to class files that cannot run on JDK 21
+    --release 21 is recommended instead of -source 21 -target 21 because it sets the location of system modules automatically
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ hw3-template ---
+[INFO] skip non existing resourceDirectory C:\Users\sanya\OneDrive\Desktop\motik_dev\hw3-template\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ hw3-template ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug target 21] to target\test-classes
+[WARNING] location of system modules is not set in conjunction with -source 21
+  not setting the location of system modules may lead to class files that cannot run on JDK 21
+    --release 21 is recommended instead of -source 21 -target 21 because it sets the location of system modules automatically
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ hw3-template ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running me.index.TestMain
+[DEBUG] size_splines: 6474 [3060, 3696, 3753, 6530, 6802] [9988002, 9989025, 9989398, 9991303, 9995169]
+[DEBUG] size_linear: 10000000 [-9223372036854775807, -9223370450943176025, -9223368865031576243, -9223367279119976461, -9223365693208376679] [4345106494929006245, 4345108151373122072, 4345109807817237899, 4345111464261353726, 4345113120705469553]
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[DEBUG] split_test strict linear64, err = 0, segments: 5000000
+[DEBUG] split_test strict linear64, err = 1, segments: 6322
+[DEBUG] split_test strict linear64, err = 2, segments: 6225
+[DEBUG] split_test strict linear64, err = 4, segments: 6034
+[DEBUG] split_test strict linear64, err = 8, segments: 5657
+[DEBUG] split_test strict linear64, err = 16, segments: 5132
+[DEBUG] split_test strict linear64, err = 32, segments: 4449
+[DEBUG] split_test strict linear64, err = 64, segments: 3571
+[DEBUG] split_test strict linear64, err = 128, segments: 2590
+[DEBUG] size_splines: 6474 [3060, 3696, 3753, 6530, 6802] [9988002, 9989025, 9989398, 9991303, 9995169]
+[DEBUG] size_linear: 10000000 [-2147483647, -2147483265, -2147482883, -2147482501, -2147482119] [849785205, 849785432, 849785659, 849785886, 849786113]
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[DEBUG] split_test weak linear32, err = 0, segments: 5000000
+[DEBUG] split_test weak linear32, err = 1, segments: 6318
+[DEBUG] split_test weak linear32, err = 2, segments: 6199
+[DEBUG] split_test weak linear32, err = 4, segments: 5996
+[DEBUG] split_test weak linear32, err = 8, segments: 5673
+[DEBUG] split_test weak linear32, err = 16, segments: 5179
+[DEBUG] split_test weak linear32, err = 32, segments: 4484
+[DEBUG] split_test weak linear32, err = 64, segments: 3609
+[DEBUG] split_test weak linear32, err = 128, segments: 2652
+[DEBUG] size_uniform: 10000000 [-2147483235, -2147483179, -2147482279, -2147480298, -2147480122] [2147482595, 2147482813, 2147483365, 2147483378, 2147483524]
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[DEBUG] split_test weak uniform32, err = 0, segments: 5000000
+[DEBUG] split_test weak uniform32, err = 1, segments: 1973357
+[DEBUG] split_test weak uniform32, err = 2, segments: 949542
+[DEBUG] split_test weak uniform32, err = 4, segments: 352570
+[DEBUG] split_test weak uniform32, err = 8, segments: 110681
+[DEBUG] split_test weak uniform32, err = 16, segments: 31406
+[DEBUG] split_test weak uniform32, err = 32, segments: 8367
+[DEBUG] split_test weak uniform32, err = 64, segments: 2162
+[DEBUG] split_test weak uniform32, err = 128, segments: 568
+[DEBUG] stress_test_btree
+[DEBUG] stress_test_btree_adapt
+[DEBUG] stress_test_l_index_adapt
+[DEBUG] stress_test_l_index
+[DEBUG] size_uniform: 10000000 [-9223364150127875536, -9223362579036066350, -9223361277879488223, -9223357647498911194, -9223356675636660014] [9223365905290590754, 9223367512435314237, 9223368449978268367, 9223369157072988884, 9223371503546390895]
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[WARNING] (err 1 > maxErr 0)
+[DEBUG] split_test strict uniform64, err = 0, segments: 5000000
+[DEBUG] split_test strict uniform64, err = 1, segments: 1974424
+[DEBUG] split_test strict uniform64, err = 2, segments: 951170
+[DEBUG] split_test strict uniform64, err = 4, segments: 353778
+[DEBUG] split_test strict uniform64, err = 8, segments: 111229
+[DEBUG] split_test strict uniform64, err = 16, segments: 31464
+[DEBUG] split_test strict uniform64, err = 32, segments: 8431
+[DEBUG] split_test strict uniform64, err = 64, segments: 2151
+[DEBUG] split_test strict uniform64, err = 128, segments: 547
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.37 s -- in me.index.TestMain
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.1:jar (default-jar) @ hw3-template ---
+[INFO] Building jar: C:\Users\sanya\OneDrive\Desktop\motik_dev\hw3-template\target\hw3-template-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- assembly:3.7.1:single (default) @ hw3-template ---
+[INFO] Building jar: C:\Users\sanya\OneDrive\Desktop\motik_dev\hw3-template\target\hw3-template-1.0-SNAPSHOT-jar-with-dependencies.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  24.063 s
+[INFO] Finished at: 2026-02-14T00:59:33+03:00
+[INFO] ------------------------------------------------------------------------

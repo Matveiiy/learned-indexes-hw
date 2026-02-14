@@ -1,0 +1,95 @@
+package me.index.map
+
+import me.index.Holder
+
+
+const val t = 32
+const val MAX_KEYS = 2 * t - 1
+
+@JvmInline
+value class BNode private constructor(private val data: LongArray) {
+    //represenation:
+    //data[0] - actual node size
+    //then keys/values (combined size = MAX_KEYS * 2)
+    //then child nodes - (OPTIONAL IF A LEAF) (children size = MAX_KEYS + 1)
+    //array looks like this:
+    //[node_size, index_0,value_0, index_1,value_1, ..., index_n,value_n, child_0, child_1, ..., child_(n + 1)]
+    //alignof would have been perfect here
+
+    val size: Int
+        get() = data.first().toInt()
+
+    //either this or checking sign of size
+    val isLeaf: Boolean
+        get() = data.size == LEAF_SIZE
+
+    fun getKey(idx: Int) = data[idx * 2 + 1]
+    fun setKey(idx: Int, v: Long) = let { data[idx * 2 + 1] = v }
+
+    fun getVal(idx: Int) = data[idx * 2 + 2]
+    fun setVal(idx: Int, v: Long) = let { data[idx * 2 + 2] = v }
+
+    fun getChild(idx: Int) = data[idx + FIRST_CHILD_IDX]
+    fun setChild(idx: Int, v: Long) = let { data[idx + FIRST_CHILD_IDX] = v }
+
+    companion object {
+        val LEAF_SIZE = 1 + MAX_KEYS * 2
+        val NON_LEAF_SIZE = LEAF_SIZE + (MAX_KEYS + 1)
+        val FIRST_CHILD_IDX = LEAF_SIZE
+
+        fun Leaf() = BNode(LongArray(LEAF_SIZE))
+        fun NonLeaf() = BNode(LongArray(NON_LEAF_SIZE))
+    }
+
+    fun lowerBoundSearch(target: Long): Int {
+        var low = 0
+        var high = size - 1
+        while (low <= high) {
+            val mid = (low + high) ushr 1
+            val midVal = getKey(mid)
+            if (midVal < target) low = mid + 1
+            else if (midVal > target) high = mid - 1
+            else return mid // exact match
+        }
+        return low // insertion point
+    }
+
+    fun linearSearch(target: Long): Int {
+        data.forEachIndexed { index, value ->
+            if (value >= target) return index
+        }
+        return size
+    }
+}
+
+class BTreeKt : Storage {
+
+    override fun init(
+        keys: List<Long?>?,
+        values: List<Any?>?,
+        maxErr: Int
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun find(key: Long, result: Holder<in Any>?): Int {
+        TODO("Not yet implemented")
+    }
+
+    override fun insert(key: Long, value: Any?): Int {
+        TODO("Not yet implemented")
+    }
+
+    override fun remove(key: Long): Int {
+        TODO("Not yet implemented")
+    }
+
+    override fun resort(keys: List<Long?>?, vals: List<Any?>?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun size(): Int {
+        TODO("Not yet implemented")
+    }
+
+}
