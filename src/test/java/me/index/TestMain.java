@@ -6,6 +6,7 @@ import me.index.map.*;
 
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -88,22 +89,36 @@ public class TestMain {
 
     public void stress_test_storage(Storage user, Storage jury, Writer out) {
         Random rnd = new Random(SEED);
+        var cnt = 0;
         for (int i = 0; i < query_cnt_stress; i++) {
             long x = rnd.nextLong(min_val_stress, max_val_stress + 1);
             int t = rnd.nextInt(3);
             if (t == 0) {
+                cnt++;
+                if (cnt == 50) {
+                    System.err.println(user.find(x, new Holder<>()) == Storage.OK);
+                    System.err.println("HERE");
+                }
+                System.err.println("Insert " + x + " cnt " + cnt);
                 int r_user = user.insert(x, x);
                 int r_jury = jury.insert(x, x);
                 assertEquals(r_jury, r_user);
                 assertTrue(check(jury, user, out));
             }
-//            else if (t == 1) {
-//                int r_user = user.remove(x);
-//                int r_jury = jury.remove(x);
-//                assertEquals(r_jury, r_user);
-//                assertTrue(check(jury, user, out));
-//            }
+            else if (t == 1) {
+                cnt++;
+                if (cnt == 682) {
+                    System.err.println(user.find(x, new Holder<>()) == Storage.OK);
+                    System.err.println("HERE");
+                }
+                System.err.println("Remove " + x + " cnt " + cnt);
+                int r_user = user.remove(x);
+                int r_jury = jury.remove(x);
+                assertEquals(r_jury, r_user);
+                assertTrue(check(jury, user, out));
+            }
             else {
+//                System.err.println("Query " + x);
                 Holder<Object> ans_user = new Holder<>(Long.MIN_VALUE);
                 Holder<Object> ans_jury = new Holder<>(Long.MIN_VALUE);
                 int r_user = user.find(x, ans_user);
@@ -117,8 +132,10 @@ public class TestMain {
     }
 
     public static boolean check(Storage t, Storage o, Writer out) {
-        if (t.size() != o.size())
+        if (t.size() != o.size()) {
+            System.err.println("Very cool1");
             return false;
+        }
 
         List<Long> k1 = new ArrayList<>(t.size());
         List<Object> v1 = new ArrayList<>(t.size());
@@ -128,15 +145,31 @@ public class TestMain {
         List<Object> v2 = new ArrayList<>(o.size());
         o.resort(k2, v2);
 
+        if (k1.size()  != k2.size()) {
+            System.err.println(Arrays.toString(k1.stream().distinct().filter(x -> !k2.contains(x)).toArray()));
+            System.err.println(Arrays.toString(k2.stream().distinct().filter(x -> !k1.contains(x)).toArray()));
+        }
         assert k1.size() == k2.size();
         assert k1.size() == v1.size();
         assert k2.size() == v2.size();
 
         for (int i = 0; i < k1.size(); i++) {
-            if (!k1.get(i).equals(k2.get(i)))
+            if (!k1.get(i).equals(k2.get(i)))  {
+                System.err.println("Not cool1");
+                System.err.println(Arrays.toString(k1.stream().distinct().filter(x -> !k2.contains(x)).toArray()));
+                System.err.println(Arrays.toString(k2.stream().distinct().filter(x -> !k1.contains(x)).toArray()));
+                System.err.println(Arrays.toString(k2.toArray()));
+                System.err.println(k1.get(i));
+                System.err.println(k2.get(i));
+                System.err.println("pos " + i);
+                System.err.println("Sorted order is violated = " + !k2.stream().sorted().toList().equals(k2));
+
                 return false;
-            if (!v1.get(i).equals(v2.get(i)))
+            }
+            if (!v1.get(i).equals(v2.get(i))) {
+                System.err.println("Not cool?");
                 return false;
+            }
         }
 
         try {
